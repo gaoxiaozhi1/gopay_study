@@ -37,7 +37,7 @@ type Client struct {
 	hc                 *xhttp.Client
 }
 
-// 初始化支付宝客户端
+// NewClient 初始化支付宝客户端
 // 注意：如果使用支付宝公钥证书验签，请使用 client.SetCertSnByContent() 或 client.SetCertSnByPath() 设置 应用公钥证书、支付宝公钥证书、支付宝根证书
 // appid：应用ID
 // privateKey：应用私钥，支持PKCS1和PKCS8
@@ -63,7 +63,7 @@ func NewClient(appid, privateKey string, isProd bool) (client *Client, err error
 	return client, nil
 }
 
-// 开启请求完自动验签功能（默认不开启，推荐开启，只支持证书模式）
+// AutoVerifySign 开启请求完自动验签功能（默认不开启，推荐开启，只支持证书模式）
 // 注意：只支持证书模式
 // alipayPublicKeyContent：支付宝公钥证书文件内容[]byte
 func (a *Client) AutoVerifySign(alipayPublicKeyContent []byte) {
@@ -91,7 +91,7 @@ func (a *Client) SetAESKey(aesKey string) {
 	a.ivKey = []byte{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
 }
 
-// Deprecated
+// GetRequestSignParam Deprecated
 // 推荐使用 RequestParam()
 func (a *Client) GetRequestSignParam(bm gopay.BodyMap, method string) (string, error) {
 	return a.RequestParam(bm, method)

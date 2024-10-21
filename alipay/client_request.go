@@ -188,7 +188,7 @@ func (a *Client) doAliPay(ctx context.Context, bm gopay.BodyMap, method string, 
 	}
 }
 
-// 向支付宝发送请求
+// DoAliPay 向支付宝发送请求
 func (a *Client) DoAliPay(ctx context.Context, bm gopay.BodyMap, method string, authToken ...string) (bs []byte, err error) {
 	var (
 		bizContent, url string
@@ -244,7 +244,7 @@ func (a *Client) DoAliPay(ctx context.Context, bm gopay.BodyMap, method string, 
 	}
 }
 
-// 保持和官方 SDK 命名方式一致
+// PageExecute 保持和官方 SDK 命名方式一致
 func (a *Client) PageExecute(ctx context.Context, bm gopay.BodyMap, method string, authToken ...string) (url string, err error) {
 	var (
 		bizContent string
@@ -280,7 +280,7 @@ func (a *Client) PageExecute(ctx context.Context, bm gopay.BodyMap, method strin
 	return baseUrl + "?" + param, nil
 }
 
-// 文件上传
+// FileUploadRequest 文件上传
 func (a *Client) FileUploadRequest(ctx context.Context, bm gopay.BodyMap, method string) (bs []byte, err error) {
 	var (
 		aat string
